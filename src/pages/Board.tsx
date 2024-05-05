@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { CellValue } from "../utils/type";
 import { calculateWinner } from "../utils/game";
 import { useNavigate } from "react-router-dom";
-import useQueue from '../hooks/useQueue';
+import useQueue from "../hooks/useQueue";
 
 interface SquareProps {
 	value: CellValue;
@@ -14,12 +14,9 @@ const Square: React.FC<SquareProps> = ({ value, onClick }) => {
 		<button
 			type="button"
 			onClick={onClick}
-			className={`h-20 w-20 border-2 border-gray-500 font-bold text-4xl flex items-center justify-center p-2 ${value === 'X'
-				? 'text-blue-500'
-				: value === 'O'
-					? 'text-red-500'
-					: ''
-				} `}
+			className={`h-20 w-20 border-2 border-gray-500 font-bold text-4xl flex items-center justify-center p-2 ${
+				value === "X" ? "text-blue-500" : value === "O" ? "text-red-500" : ""
+			} `}
 		>
 			{value || ""}
 		</button>
@@ -42,10 +39,11 @@ const Board: React.FC = () => {
 
 		if (specialMode) {
 			const maxCount = 3;
-			const currCount = newSquares.filter((val) => val === currentPlayer).length;
+			const currCount = newSquares.filter(
+				(val) => val === currentPlayer
+			).length;
 
 			if (currCount >= maxCount) {
-				// const oldestIndex = newSquares.indexOf(currentPlayer === 'X' ? 'X' : 'O');
 				const oldestIndex: number = peek()!;
 				if (oldestIndex !== -1) {
 					newSquares[oldestIndex] = null;
@@ -122,7 +120,7 @@ const Board: React.FC = () => {
 			)}
 			<button
 				type="button"
-				onClick={() => navigate('/')}
+				onClick={() => navigate("/")}
 				className="mt-4 ml-4 px-4 py-2 bg-gray-500 text-white rounded hover:bg-gray-600"
 			>
 				Back to Home

@@ -15,16 +15,28 @@ If you are developing a production application, we recommend updating the config
 
 ```js
 export default {
-  // other rules...
-  parserOptions: {
-    ecmaVersion: 'latest',
-    sourceType: 'module',
-    project: ['./tsconfig.json', './tsconfig.node.json'],
-    tsconfigRootDir: __dirname,
-  },
-}
+	// other rules...
+	parserOptions: {
+		ecmaVersion: "latest",
+		sourceType: "module",
+		project: ["./tsconfig.json", "./tsconfig.node.json"],
+		tsconfigRootDir: __dirname,
+	},
+};
 ```
 
 - Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
 - Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
 - Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
+
+## To-Do:
+
+### Create working websocket server:
+
+1. Modify board page to accommodates multiplayer mode.
+2. Create few websocket functions to enable multiplayer.
+3. Websocket server just for multiplayer mode by updating the board.
+
+### Further styling by using UI Frameworks:
+
+1. Not planned anything yet.
