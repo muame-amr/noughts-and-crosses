@@ -1,8 +1,6 @@
-import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 const Multiplayer: React.FC = () => {
-	const [roomId, setRoomId] = useState<string | null>(null);
 	const navigate = useNavigate();
 
 	const createRoom = () => {
@@ -16,7 +14,6 @@ const Multiplayer: React.FC = () => {
 			const data = JSON.parse(event.data);
 
 			if (data.type === "ROOM_CREATED") {
-				setRoomId(data.roomId);
 				navigate(`game?roomId=${data.roomId}`);
 			}
 		};
@@ -34,7 +31,6 @@ const Multiplayer: React.FC = () => {
 
 			ws.onmessage = (event) => {
 				const data = JSON.parse(event.data);
-
 				if (data.type === "ROOM_FULL") {
 					navigate("/room-full");
 				} else if (data.type === "PLAYER_JOINED") {
@@ -49,7 +45,6 @@ const Multiplayer: React.FC = () => {
 			<h2>Play with Friend</h2>
 			<button onClick={createRoom}>Create Room</button>
 			<button onClick={joinRoom}>Join Room</button>
-			{roomId && <p>Room ID: {roomId}</p>}
 		</div>
 	);
 };

@@ -14,9 +14,8 @@ const Square: React.FC<SquareProps> = ({ value, onClick }) => {
 		<button
 			type="button"
 			onClick={onClick}
-			className={`h-20 w-20 border-2 border-gray-500 font-bold text-4xl flex items-center justify-center p-2 ${
-				value === "X" ? "text-blue-500" : value === "O" ? "text-red-500" : ""
-			} `}
+			className={`h-20 w-20 border-2 border-gray-500 font-bold text-4xl flex items-center justify-center p-2 ${value === "X" ? "text-blue-500" : value === "O" ? "text-red-500" : ""
+				} `}
 		>
 			{value || ""}
 		</button>
@@ -50,7 +49,6 @@ const Board: React.FC = () => {
 					dequeue();
 				}
 			}
-
 			enqueue(i);
 		}
 
@@ -69,7 +67,7 @@ const Board: React.FC = () => {
 	};
 
 	const renderSquare = (i: number) => (
-		<Square value={squares[i] || null} onClick={() => handleClick(i)} />
+		<Square key={i} value={squares[i] || null} onClick={() => handleClick(i)} />
 	);
 
 	let status;
@@ -91,6 +89,7 @@ const Board: React.FC = () => {
 	return (
 		<div>
 			<div className="mb-4 text-xl font-bold flex flex-col justify-between items-center gap-y-4">
+				<h1>{window.location.search.split('=')[1] || ''}</h1>
 				<span>{status}</span>
 				<label className="relative inline-flex items-center cursor-pointer">
 					<input
